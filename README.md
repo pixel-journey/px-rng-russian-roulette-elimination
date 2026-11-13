@@ -1,14 +1,12 @@
-# px-rng-russian-roulette-elimination
+# Elimination lobby with disconnect recovery
 
-> **Trust:** private educational lab (Tier B)  
-> **Quest:** 020 — elimination lobby with disconnect recovery  
-> **Vault:** [px-contract-examples-vault](https://github.com/pixel-journey/px-contract-examples-vault)
+> **Domain:** multiplayer elimination lobby  
+> **Catalog:** [px-contract-examples-vault](https://github.com/pixel-journey/px-contract-examples-vault)  
+> **Path:** [ORNG-LEARNING-PATH.md](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/docs/ORNG-LEARNING-PATH.md)
 
-**One-sentence goal:** Teach a lobby that takes a **fixed buy-in**, eliminates **one alive seat per spin**, and lets a disconnected seat **reconnect before a 60s grace** or **forfeit after it**.
+**Goal:** A lobby that takes a **fixed buy-in**, eliminates **one alive seat per spin**, and lets a disconnected seat **reconnect before a 60s grace** or **forfeit after it**.
 
-**Real code:** `npm test`. Entropy is a **64-hex stand-in**. This repo does **not** call `orng.wax` and does **not** transfer tokens. `join` only credits an in-memory pot.
-
----
+**Code under test:** `npm test`. Entropy is a 64-hex stand-in. This repo does not call `orng.wax` and does not transfer tokens. `join` only credits an in-memory pot.
 
 ## What is true (executed)
 
@@ -21,11 +19,7 @@
 | `forfeitExpired` | at/after deadline the seat is eliminated; pot unchanged |
 | `claim` | exactly one alive seat, no unresolved disconnect; whole pot once |
 
-```bash
-npm test
-```
-
-## Actions this lab does **not** claim
+## Scope honesty
 
 | Name | Status |
 |------|--------|
@@ -33,8 +27,10 @@ npm test
 | Token `transfer` into the lobby | not modeled |
 | Host rake or mid-game refund | not present |
 
-Different from quest 006 (`px-orng-roulette-wheel-escrow`), which is a European wheel bet, not an elimination lobby. Different from quest 019, which must not reduce principal.
+Different from [px-orng-roulette-wheel-escrow](https://github.com/pixel-journey/px-orng-roulette-wheel-escrow) (European wheel bet, not an elimination lobby). Different from [px-rng-no-loss-prize-pool](https://github.com/pixel-journey/px-rng-no-loss-prize-pool) (principal must not decrease).
 
-## License
+```bash
+npm test
+```
 
 MIT — Pixel Journey
