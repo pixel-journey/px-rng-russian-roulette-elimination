@@ -1,20 +1,28 @@
-# Education
+# Education — elimination lobby
 
-The failure mode this quest exists to show is a disconnect that **auto-kills** a seat with no recovery window, or a spin that can select that seat while they are gone.
+> **Rung:** `npm test` passes. Fixed buy-in **1000**, max **6** seats, **60s** disconnect grace.  
+> Not European roulette ([wheel escrow](https://github.com/pixel-journey/px-orng-roulette-wheel-escrow)). Not no-loss principal ([prize pool](https://github.com/pixel-journey/px-rng-no-loss-prize-pool)).
 
-```text
-alive --disconnect--> disconnected (deadline = now + 60)
-disconnected --reconnect before deadline--> alive
-disconnected --forfeitExpired at/after deadline--> eliminated
-spin draws only among status == alive
-claim requires exactly one alive and zero disconnected
-```
+## What you should be able to do
 
-Buy-in is already in the pot at join. Elimination does not move the pot again. That keeps "who is out" separate from "where the stake sits."
+| Level | Skill |
+| --- | --- |
+| Beginner | Join → start → spin eliminates one **alive** seat |
+| Intermediate | Disconnect / reconnect within grace; forfeit after |
+| Masterclass | Claim only with exactly one alive and no open disconnects |
 
-## What a future agent should not invent
+## Beginner
 
-- Do not name this `orng.wax`. A production lobby would open a quest-001 job per spin; this file does not, on purpose.
-- Do not treat this as the wheel escrow in `px-orng-roulette-wheel-escrow` (0..36, house edge).
-- Do not pay a disconnected seat with `claim`. Unresolved disconnects must reconnect or forfeit first.
-- Do not refund a forfeited seat from the pot. Their buy-in stayed in.
+Equal buy-ins form the pot. Each spin removes exactly one alive seat from the draw. Pot is unchanged until claim.
+
+## Intermediate
+
+Disconnected seats are **not** drawn. They must reconnect before deadline or be forfeited (eliminated without pot change).
+
+## Masterclass
+
+Entropy is a 64-hex stand-in. Production should use dual-callback once-only resolve. Host rake and mid-game refunds are out of scope here.
+
+## Will not teach
+
+Token custody, orng delivery, or European wheel odds.
