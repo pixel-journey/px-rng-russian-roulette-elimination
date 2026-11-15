@@ -1,28 +1,21 @@
-# Education — elimination lobby
-
-> **Rung:** `npm test` passes. Fixed buy-in **1000**, max **6** seats, **60s** disconnect grace.  
-> Not European roulette ([wheel escrow](https://github.com/pixel-journey/px-orng-roulette-wheel-escrow)). Not no-loss principal ([prize pool](https://github.com/pixel-journey/px-rng-no-loss-prize-pool)).
-
-## What you should be able to do
-
-| Level | Skill |
-| --- | --- |
-| Beginner | Join → start → spin eliminates one **alive** seat |
-| Intermediate | Disconnect / reconnect within grace; forfeit after |
-| Masterclass | Claim only with exactly one alive and no open disconnects |
+# Education — russian-roulette elimination
 
 ## Beginner
 
-Equal buy-ins form the pot. Each spin removes exactly one alive seat from the draw. Pot is unchanged until claim.
+Everyone pays the same buy-in into a pot. Each spin removes one still-alive player. The last alive claims the whole pot once.
 
 ## Intermediate
 
-Disconnected seats are **not** drawn. They must reconnect before deadline or be forfeited (eliminated without pot change).
+Disconnected seats are not in the draw. They get a grace window to reconnect; after that, forfeit eliminates them without a spin. The pot does not shrink on eliminate or forfeit in this lab — buy-ins stay until claim.
 
-## Masterclass
+## Masterclass (not in this repo)
 
-Entropy is a 64-hex stand-in. Production should use dual-callback once-only resolve. Host rake and mid-game refunds are out of scope here.
+- Real token escrow and payouts.
+- `orng.wax` for the spin bytes.
+- Whether forfeited buy-ins stay in the pot or are refunded (this lab keeps the pot).
 
-## Will not teach
+## Outcomes
 
-Token custody, orng delivery, or European wheel odds.
+1. Enforce exact buy-in and max 6 seats.
+2. Spin does not change the pot.
+3. Claim only when exactly one seat is alive and no open disconnects.

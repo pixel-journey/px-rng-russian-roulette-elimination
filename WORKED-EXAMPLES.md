@@ -1,25 +1,34 @@
 # Worked examples — elimination lobby
 
-## Example A — fill and start
+`BUY_IN` is exactly `1000`. `MAX_SEATS` is 6. `GRACE_SEC` is the disconnect window. Entropy `11` × 32.
 
-Two+ joins at buy-in 1000; `start` requires ≥2 alive.
+## Join
 
-## Example B — spin
+Two seats at 1000 each → pot `2000`, two alive.
 
-Exactly one alive eliminated; pot unchanged; disconnected not eligible.
+| Case | Error |
+| --- | --- |
+| join with 999 | exactly 1000 |
+| same name twice | already seated |
+| 7th seat | full |
+| start with one player | at least 2 |
 
-## Example C — disconnect recovery
+## Spin
 
-`disconnect` sets deadline now+60; `reconnect` before deadline → alive; after → grace expired.
+Three alive: spin eliminates **exactly one**, pot unchanged, two alive remain.
 
-## Example D — forfeitExpired
+Carol disconnects before spin: she is not drawn; status stays `disconnected`.
 
-At/after deadline, disconnected → eliminated; pot unchanged.
+After one of two is eliminated, a second spin throws `at least 2 alive`.
 
-## Example E — claim
+## Disconnect
 
-Exactly one alive, no disconnected seats → winner takes entire pot once.
+Disconnect bob at t=1000. Reconnect at `1000 + GRACE_SEC - 1` → alive again.
+Reconnect at `1000 + GRACE_SEC` → `grace expired`.
+`forfeitExpired` at that time → bob `eliminated`, pot still `3000` (buy-ins stay).
 
-## Example F — claim blocked
+## Claim
 
-Any disconnected seat → `resolve disconnects before claim`.
+Two-player lobby, one spin, claim → paid `2000` to the last alive, pot `0`. Second claim → `already claimed`.
+
+Claim with two alive → `exactly one alive`. Claim while a disconnect is unresolved → `resolve disconnects`.

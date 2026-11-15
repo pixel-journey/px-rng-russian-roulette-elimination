@@ -1,10 +1,5 @@
-# Security notes — elimination lobby
+# Security
 
-| Mitigated | Behavior |
-| --- | --- |
-| Wrong buy-in | refused |
-| Spin with <2 alive | refused |
-| Claim with disconnects | refused |
-| Double claim | refused |
+Closed: wrong buy-in, duplicate seat, full lobby, solo start, spin with <2 alive, claim too early, double claim, grace expiry.
 
-Production: real escrow, oracle auth, anti-grief on disconnect griefing (timeout already modeled).
+Not closed: no chain auth, no token custody, entropy is an argument, no live orng.

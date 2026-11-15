@@ -1,5 +1,5 @@
-# Tips — multiplayer lobbies
+# Tips
 
-- Separate **alive** vs **disconnected** vs **eliminated** explicitly.
-- Never draw disconnected seats.
-- Wire real RNG via [dual-callback](https://github.com/pixel-journey/px-orng-dual-callback-idempotent) before production.
+- Exact buy-in stops partial seats and accounting bugs.
+- Never draw disconnected players; that is how a offline user gets unfairly eliminated mid-grace.
+- Claim is once-only; lock the pot to zero after pay.
