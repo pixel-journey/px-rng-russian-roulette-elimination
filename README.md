@@ -1,31 +1,14 @@
-# Elimination lobby with disconnect recovery
+# Elimination lobby (last alive claims pot)
 
-> **Domain:** multiplayer elimination lobby  
-> **Sources:** [SOURCES.md](SOURCES.md)  
-> **Path:** [ORNG-LEARNING-PATH.md](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/docs/ORNG-LEARNING-PATH.md)
-
-**Goal:** Fixed buy-in, eliminate one **alive** seat per spin, reconnect before **60s** grace or forfeit after. Claim when exactly one alive remains and no open disconnects.
-
-**Code under test:** `npm test`. Entropy stand-in only; no token transfers.
-
-## Learning materials
+Educational fixed buy-in seats, entropy spin, disconnect grace, once claim. Pure TypeScript.
 
 | Doc | Role |
 | --- | --- |
 | [EDUCATION.md](EDUCATION.md) | Beginner → masterclass |
-| [WORKED-EXAMPLES.md](WORKED-EXAMPLES.md) | Spin, grace, claim |
-| [TIPS.md](TIPS.md) | Alive vs disconnected |
-| [SECURITY.md](SECURITY.md) | Claim gates |
-| [SOURCES.md](SOURCES.md) | Official |
-
-## What is true (executed)
-
-| Rule | Result |
-|------|--------|
-| join | buy-in 1000; max 6 |
-| spin | one alive eliminated; pot unchanged |
-| reconnect / forfeit | grace 60s |
-| claim | one alive; pot once |
+| [WORKED-EXAMPLES.md](WORKED-EXAMPLES.md) | Pot / grace tables |
+| [TIPS.md](TIPS.md) | Pot invariant |
+| [SECURITY.md](SECURITY.md) | Gaps |
+| [SOURCES.md](SOURCES.md) | Links |
 
 ```bash
 npm test
