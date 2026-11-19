@@ -7,7 +7,14 @@
 | [RNG tutorial](https://docs.wax.io/build/tutorials/create-wax-rng-smart-contract/rng_sample) | Sample dapp |
 | [docs.eosnetwork.com](https://docs.eosnetwork.com/) | Permissions context |
 
-**Product promise:** pot = seats × exact buy-in. Spin and forfeit do not change the pot. Principal is **at risk by design** — this is not a no-loss raffle.
+## Product facts locked by tests
+
+- Pot = seats × **exact** buy-in. Partial seats and wrong amounts are refused.
+- Spin and forfeit do **not** change the pot. Principal is **at risk by design**.
+- Exclude disconnected seats from the elimination draw. Reconnect after grace is refused.
+- Claim once; zero the pot in the same logical step. Claim with more than one alive is refused.
+- Start with fewer than two seats is refused. Spin with one alive is refused.
+- This is **not** [no-loss](https://github.com/pixel-journey/px-rng-no-loss-prize-pool). There the principal stays fixed and only yield is awarded.
 
 ## Related labs
 
