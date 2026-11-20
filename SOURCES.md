@@ -24,4 +24,4 @@
 | [coinflip](https://github.com/pixel-journey/px-orng-coinflip-escrow) | House-edge escrow |
 | [dual-callback](https://github.com/pixel-journey/px-orng-dual-callback-idempotent) | Once-resolve spin |
 | [v3 starter](https://github.com/pixel-journey/px-orng-v3-randnotify-starter) | Job table before entropy |
-| [ORNG path](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/docs/ORNG-LEARNING-PATH.md) | Curriculum order |
+| `px-contract-examples-vault` (private index; not this public course) | Curriculum order |
